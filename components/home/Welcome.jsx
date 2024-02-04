@@ -12,7 +12,7 @@ const Welcome = () => {
       <View style={styles.container}>
         <Text style={styles.welcomeTxt(COLORS.black, SIZES.xSmall)}>Tokyo</Text>
         <Text style={styles.welcomeTxt(COLORS.red )}>Osaka</Text>
-        {/* <Text style={styles.welcomeTxt(COLORS.tertiary)}>Fukuoka</Text> */}
+        <Text style={styles.welcomeTxt(COLORS.tertiary)}>Fukuoka</Text>
       </View>
       <View style={styles.searchContainer}>
         <TouchableOpacity>
