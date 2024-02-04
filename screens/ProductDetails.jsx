@@ -1,11 +1,14 @@
 import {  Image, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
+import { useRoute } from '@react-navigation/native'
 import styles from './ProductDetails.style'
-import { Ionicons, SimpleLineIcons } from '@expo/vector-icons'
+import { Ionicons, SimpleLineIcons, MaterialCommunityIcons, Fontisto } from '@expo/vector-icons'
 import { COLORS } from '../constants'
 
 const ProductDetails = ({navigation}) => {
-  const [count, setCount] =useState(1)
+  const [count, setCount] =useState(1);
+  const route = useRoute();
+  const {item} = route.params;
 
   const navigateBack = () => {
     navigation.goBack()
@@ -22,6 +25,8 @@ const ProductDetails = ({navigation}) => {
     }
     setCount(prevCount => prevCount - 1)
   }
+  const productBuy = () => {}
+  const productAdd = () => {}
 
   return (
     <View style={styles.container}>
@@ -34,14 +39,14 @@ const ProductDetails = ({navigation}) => {
         </TouchableOpacity>
       </View>
       <Image
-        source={{uri: 'https://source.unsplash.com/1024x768/?house'}}
+        source={{uri: item.imageUrl}}
         style={styles.image}
       />
       <View style={styles.details}>
         <View style={styles.titleRow}>
-          <Text style={styles.title}>Product</Text>
+          <Text style={styles.title}>{item.title}</Text>
           <View style={styles.priceWrapper}>
-            <Text style={styles.price}>$100</Text>
+            <Text style={styles.price}>{item.price}</Text>
           </View>
         </View>
       </View>
@@ -71,9 +76,27 @@ const ProductDetails = ({navigation}) => {
       </View>
       <View style={styles.descriptionWrapper}>
           <Text style={styles.description}>Foo</Text>
-          <Text style={styles.descriptionText}>
-          On a bright spring day, in a small school on the outskirts of Tokyo, a special class was about to begin. That day, the school welcomed a new student, Yuuki, who had just transferred. Yuuki was shy and struggled to adapt to the new environment.
-          </Text>
+          <Text style={styles.descriptionText}>{item.description}</Text>
+      </View>
+      <View style={{marginTop: 8}}>
+        <View style={styles.location}>
+          <View style={{flexDirection:'row'}}>
+            <Ionicons name='location-outline' size={16}/>
+            <Text>{item.product_location}</Text>
+          </View>
+          <View style={{flexDirection:'row'}}>
+            <MaterialCommunityIcons name='truck-delivery-outline' size={16}/>
+            <Text>Free Delivery</Text>
+          </View>
+        </View>
+      </View>
+      <View style={styles.cartRow}>
+        <TouchableOpacity style={styles.cartBtn} onPress={() => {productBuy}}>
+          <Text style={styles.cartTitle}>BUY NOW</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.addCart} onPress={() => {productAdd}}>
+          <Fontisto name='shopping-bag' size={16} color={COLORS.lightWhite}/>
+        </TouchableOpacity>
       </View>
     </View>
   )
