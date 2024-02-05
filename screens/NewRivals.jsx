@@ -21,7 +21,7 @@ const NewRivals = ({navigation}) => {
               color={COLORS.lightWhite}
             />
           </TouchableOpacity>
-          <Text>Products</Text>
+          <Text style={styles.heading}>Products</Text>
         </View>
       </View>
     </SafeAreaView>

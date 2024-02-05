@@ -20,6 +20,12 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.large,
     top: SIZES.large,
     zIndex: 999
+  },
+  heading: {
+    fontFamily: 'semibold',
+    fontSize: SIZES.medium,
+    color: COLORS.lightWhite,
+    marginLeft: 8
   }
 });
 
